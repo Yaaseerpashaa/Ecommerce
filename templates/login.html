@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block title %}Login{% endblock title %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow rounded-4">
+        <div class="card-body p-5">
+
+          <!-- Flash Messages -->
+          {% for message in messages %}
+          <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          {% endfor %}
+
+          <h2 class="text-center text-dark fw-bold mb-4">Login</h2>
+
+          <!-- Login Form -->
+          <form action="/auth/login/" method="post" novalidate>
+            {% csrf_token %}
+
+            <div class="mb-3">
+              <label for="email" class="form-label">Email address</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                placeholder="Enter your email"
+                required
+              />
+            </div>
+
+            <div class="mb-4">
+              <label for="pass1" class="form-label">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="pass1"
+                name="pass1"
+                placeholder="Enter your password"
+                required
+              />
+            </div>
+
+            <div class="d-grid">
+              <button type="submit" class="btn btn-dark">Login</button>
+            </div>
+
+            <div class="mt-3 text-center">
+              <small>
+                Forgot Password?
+                <a href="/auth/request-reset-email/" class="text-decoration-none">Reset</a>
+              </small>
+              <br />
+              <small>
+                New User?
+                <a href="/auth/signup/" class="text-decoration-none">Sign up</a>
+              </small>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

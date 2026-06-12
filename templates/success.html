@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}Payment Success{% endblock %}
+
+{% block content %}
+<style>
+    .payment-success-box {
+        background-color: rgba(0, 0, 0, 0.7); /* Dark transparent background */
+        color: #fff; /* White text for high contrast */
+        padding: 40px;
+        border-radius: 15px;
+        max-width: 600px;
+        margin: 80px auto;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(8px);
+    }
+
+    .payment-success-box h2 {
+        color: #4CAF50;
+        font-weight: bold;
+    }
+
+    .payment-success-box a.btn-primary {
+        font-weight: bold;
+    }
+
+    body {
+        background: url('/static/images/bgg.jpg') no-repeat center center fixed;
+        background-size: cover;
+    }
+</style>
+
+<div class="payment-success-box text-center">
+    <h2>✅ Payment Successful!</h2>
+    <p>Thank you <strong>{{ order.name }}</strong> for your payment.</p>
+    <p><strong>Order ID:</strong> {{ order.oid }}</p>
+    <p><strong>Amount:</strong> ₹{{ order.amount }}</p>
+    <p><strong>Status:</strong> {{ order.status }}</p>
+
+    <a href="/" class="btn btn-primary mt-3">Return to Home</a>
+</div>
+{% endblock %}

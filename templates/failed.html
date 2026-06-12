@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}Payment Failed{% endblock %}
+
+{% block content %}
+<style>
+    .payment-failure-box {
+        background-color: rgba(0, 0, 0, 0.7); /* Dark transparent background */
+        color: #fff; /* White text for high contrast */
+        padding: 40px;
+        border-radius: 15px;
+        max-width: 600px;
+        margin: 80px auto;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(8px);
+    }
+
+    .payment-failure-box h2 {
+        color: #ff4d4d;
+        font-weight: bold;
+    }
+
+    .payment-failure-box a.btn-warning {
+        color: #000;
+        font-weight: bold;
+    }
+
+    body {
+        background: url('/static/images/background.jpg') no-repeat center center fixed;
+        background-size: cover;
+    }
+</style>
+
+<div class="payment-failure-box text-center">
+    <h2> Payment Failed!</h2>
+    <p>Sorry <strong>{{ order.name }}</strong>, your payment for Order ID <strong>{{ order.oid }}</strong> has failed.</p>
+    <p>Please try again or contact support.</p>
+    <a href="/" class="btn btn-warning mt-3">Return to Home</a>
+</div>
+{% endblock %}
